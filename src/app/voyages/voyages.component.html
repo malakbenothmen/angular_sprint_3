@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="card shadow mb-4">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Destination</th>
+                <th>Date de départ</th>
+                <th>Date de retour</th>
+                <th>Prix</th>
+                <th>Nombre de personnes</th>
+                <th>Moyen de transport</th>
+                <th>Description</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let voy of voyages">
+                <td>{{voy.idVoyage}}</td>
+                <td>{{ voy.destination }}</td>
+                <td>{{ voy.dateDepart | date:'dd/MM/yyyy' }}</td>
+                <td>{{ voy.dateRetour | date:'dd/MM/yyyy' }}</td>
+                <td>{{ voy.prixVoyage  }}</td>
+                <td>{{ voy.nbPersonnes }}</td>
+                <td>{{ voy.moyTransport }}</td>
+                <td>{{ voy.description }}</td>
+                <!--<td>{{ voy.type?.nomType }}</td>-->
+                <td *ngIf="voy.type">{{ voy.type.nomType }}</td>
+                <td *ngIf="!voy.type">Type inconnu</td>
+
+                <td><a  *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerVoyage(voy)">Supprimer</a></td>
+                <td><a  *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateVoyage',voy.idVoyage]">Modifier</a></td>
+              </tr>
+            </tbody>
+          </table>
+          
+    </div>
+    </div>
+    </div>

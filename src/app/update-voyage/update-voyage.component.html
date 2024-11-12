@@ -1,0 +1,58 @@
+<div class="container">
+    <div>
+      <h2>Modifier un Voyage :</h2>
+    </div>
+  
+    <form >
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>ID Voyage</label>
+        <input readonly type="number" [(ngModel)]="currentVoyage.idVoyage" name="idVoyage" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Destination</label>
+        <input type="text" [(ngModel)]="currentVoyage.destination"   name="destination" class="form-control" required>
+      </div>
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>Prix Voyage</label>
+        <input type="number" [(ngModel)]="currentVoyage.prixVoyage" name="prixVoyage" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Date de départ</label>
+        <input type="date" [ngModel]="currentVoyage.dateDepart| date: 'yyyy-MM-dd'"
+        (ngModelChange)="currentVoyage.dateDepart= $event" name="dateDepart" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Date de retour</label>
+        <input type="date" [ngModel]="currentVoyage.dateRetour| date: 'yyyy-MM-dd'" (ngModelChange)=" currentVoyage.dateRetour= $event" name="dateRetour" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Nombre de personnes</label>
+        <input type="number" [(ngModel)]="currentVoyage.nbPersonnes" name="nbPersonnes" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Moyen de transport</label>
+        <input type="text" [(ngModel)]="currentVoyage.moyTransport" name="moyTransport" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Description</label>
+        <textarea [(ngModel)]="currentVoyage.description" name="description" class="form-control" required></textarea>
+      </div>
+      <label>Type</label>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <select class="form-control form-control-lg" id="idType" name="idType"
+        [(ngModel)]="updatedTypeId">
+        <option *ngFor="let cat of types" [value]="cat.idType" >
+        {{cat.nomType}}
+        </option>
+        </select>
+        </div>
+      <div class="mt-2">
+        <button type="submit" (click)="updateVoyage()"class="btn btn-success">Modifier</button>
+        </div>
+       
+    </form>
+  </div>
+  
+   
+    
+        

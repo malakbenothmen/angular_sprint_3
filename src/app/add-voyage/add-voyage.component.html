@@ -1,0 +1,57 @@
+<div class="container">
+    <div>
+      <h2>Ajouter un Voyage :</h2>
+    </div>
+  
+    <form >
+      <div hidden="col-sm-2 col-md-2 col-lg-2">
+        <label>ID Voyage</label>
+        <input type="number" [(ngModel)]="newVoyage.idVoyage" name="idVoyage" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Destination</label>
+        <input type="text" [(ngModel)]="newVoyage.destination" name="destination" class="form-control" required>
+      </div>
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>Prix Voyage</label>
+        <input type="number" [(ngModel)]="newVoyage.prixVoyage" name="prixVoyage" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Date de départ</label>
+        <input type="date" [(ngModel)]="newVoyage.dateDepart" name="dateDepart" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Date de retour</label>
+        <input type="date" [(ngModel)]="newVoyage.dateRetour" name="dateRetour" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Nombre de personnes</label>
+        <input type="number" [(ngModel)]="newVoyage.nbPersonnes" name="nbPersonnes" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Moyen de transport</label>
+        <input type="text" [(ngModel)]="newVoyage.moyTransport" name="moyTransport" class="form-control" required>
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Description</label>
+        <textarea [(ngModel)]="newVoyage.description" name="description" class="form-control" required></textarea>
+      </div>
+
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Type</label>
+        <select class="form-control form-control-lg" id="idType" name="idType"
+        [(ngModel)]="newIdType">
+         <option *ngFor="let cat of types" [value]="cat.idType" >
+         {{cat.nomType}}
+        </option>
+        </select>
+        </div>
+      <div class="mt-2">
+        <button type="submit" (click)="addVoyage()"class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+  </div>
+  
+   
+    
+        
