@@ -13,6 +13,7 @@
                 <th>Moyen de transport</th>
                 <th>Description</th>
                 <th>Type</th>
+                <th>Image</th>
               </tr>
             </thead>
             <tbody>
@@ -28,6 +29,10 @@
                 <!--<td>{{ voy.type?.nomType }}</td>-->
                 <td *ngIf="voy.type">{{ voy.type.nomType }}</td>
                 <td *ngIf="!voy.type">Type inconnu</td>
+                <td><img class="card-img-top img-responsive"  
+                  src = "{{voy.imageStr}}"  
+                  style = "height :50px;width:100px"> 
+</td> 
 
                 <td><a  *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerVoyage(voy)">Supprimer</a></td>
                 <td><a  *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateVoyage',voy.idVoyage]">Modifier</a></td>

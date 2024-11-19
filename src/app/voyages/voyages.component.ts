@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Voyage } from '../model/voyage.model';
 import { VoyageService } from '../services/voyage.service';
 import { AuthService } from '../services/auth.service';
+import { Image } from '../model/image.model';
 
 @Component({
   selector: 'app-voyages',
@@ -26,13 +27,20 @@ export class VoyagesComponent implements  OnInit {
 
       }
 
-      chargerVoyages(){
-        this.voyageService.listeVoyages().subscribe(voys => {
-          //console.log(voys);
-          this.voyages = voys;
-          });
+      chargerVoyages(){ 
+        this.voyageService.listeVoyages().subscribe(voys => { 
+          this.voyages = voys; 
+     
+          this.voyages.forEach((voy) => { 
+       
+              voy.imageStr = 'data:' +  voy.images[0].type + ';base64,' +  voy.images[0].image; 
+            
+          });          
+        }); 
+       }
 
-      }
+
+ 
 
       supprimerVoyage(v: Voyage)
       {

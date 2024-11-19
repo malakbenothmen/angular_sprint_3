@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { apiURL } from '../config';
 import { TypeWrapper } from '../model/typeWrapped.model';
+import { Image } from '../model/image.model';
 
 const httpOptions = {
 headers: new HttpHeaders( {'Content-Type': 'application/json'} )
@@ -104,19 +105,44 @@ export class VoyageService {
         }
 
 
-        rechercherParType(id: number):Observable< Voyage[]> {
-          const url = `${apiURL}/voystype/${id}`;
-          return this.http.get<Voyage[]>(url);
+      rechercherParType(id: number):Observable< Voyage[]> {
+        const url = `${apiURL}/voystype/${id}`;
+        return this.http.get<Voyage[]>(url);
           }
 
-          rechercherParDestination(dest: string):Observable< Voyage[]> {
-            const url = `${apiURL}/voysByDestination/${dest}`;
-            return this.http.get<Voyage[]>(url);
+      rechercherParDestination(dest: string):Observable< Voyage[]> {
+          const url = `${apiURL}/voysByDestination/${dest}`;
+          return this.http.get<Voyage[]>(url);
             }
 
-            ajouterType( tp: Type):Observable<Type>{
-              return this.http.post<Type>(this.apiURLType, tp, httpOptions);
+      ajouterType( tp: Type):Observable<Type>{
+          return this.http.post<Type>(this.apiURLType, tp, httpOptions);
               }
+
+
+      uploadImage(file: File, filename: string): Observable<Image>{ 
+          const imageFormData = new FormData(); 
+          imageFormData.append('image', file, filename); 
+          const url = `${apiURL + '/image/upload'}`; 
+          return this.http.post<Image>(url, imageFormData); 
+             } 
+         
+      loadImage(id: number): Observable<Image> { 
+          const url = `${apiURL + '/image/get/info'}/${id}`; 
+          return this.http.get<Image>(url); 
+        }
+
+        uploadImageVoy(file: File, filename: string, idVoy:number): Observable<any>{ 
+          const imageFormData = new FormData(); 
+          imageFormData.append('image', file, filename); 
+          const url = `${apiURL + '/image/uplaodImageVoy'}/${idVoy}`; 
+          return this.http.post(url, imageFormData); 
+        } 
+
+        supprimerImage(id : number) { 
+          const url = `${apiURL}/image/delete/${id}`; 
+          return this.http.delete(url, httpOptions); 
+          } 
               
         
       

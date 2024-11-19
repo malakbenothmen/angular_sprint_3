@@ -1,3 +1,4 @@
+import { Image } from "./image.model";
 import { Type } from "./type.model";
 
 export class Voyage {
@@ -10,5 +11,9 @@ export class Voyage {
     moyTransport! : string; 
     description! : string;
     type! : Type ;
+    image! : Image ;
+    imageStr!:string ;
+
+    images!: Image[];
 
 }
